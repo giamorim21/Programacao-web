@@ -1,10 +1,10 @@
 body {
+    font-family: Montserrat, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     background-image: url('imagem.jpg');
     background-repeat: no-repeat;
     background-size: 100%;

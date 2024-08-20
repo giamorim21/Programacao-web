@@ -35,6 +35,16 @@ function validaCpf(cpf) {
         return false;
     }
 
+    //console.log(typeof(cpf));
+
+    // Interar 9 primeiros digitos, respeitando a seguinte regra:
+    // digito1 * 10 + digito2 * 9 + digito3 * 8 + ... + digito9 * 2 = resultado
+    // Dividir resultado por 11
+    // Recuperar o RESTO da divisão por 11
+    // Calcular (11 - RESTO)
+    // O resultado de (11 - RESTO) deve ser primeiro digito verificador do CPF (10º digito)
+    // Caso o RESTO seja 0 ou 1, o digito verificador deve ser ZERO
+
     return true;
 
 }
