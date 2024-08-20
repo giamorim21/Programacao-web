@@ -45,7 +45,7 @@ function validaCpf(cpf) {
     // digito1 * 10 + digito2 * 9 + digito3 * 8 + ... + digito9 * 2 = resultado
     for(let i = 0; i < 9; i++) {
         //console.log(cpf.charAt(i-1));
-        soma = soma + (cpf.charAt(i-1) * (10 - (i-1)));
+        soma = soma + (cpf.charAt(i) * (10 - i));
     }
     console.log(soma);
 
