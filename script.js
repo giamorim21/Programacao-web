@@ -35,16 +35,54 @@ function validaCpf(cpf) {
         return false;
     }
 
+    cpf = cpf.replace(/\./g, ''); /*Substitui o ponto por nada*/
+
     //console.log(typeof(cpf));
 
     // Interar 9 primeiros digitos, respeitando a seguinte regra:
+    let soma = 0;
+
     // digito1 * 10 + digito2 * 9 + digito3 * 8 + ... + digito9 * 2 = resultado
+    for(let i = 0; i < 9; i++) {
+        //console.log(cpf.charAt(i-1));
+        soma = soma + (cpf.charAt(i-1) * (10 - (i-1)));
+    }
+    console.log(soma);
+
     // Dividir resultado por 11
     // Recuperar o RESTO da divisão por 11
     // Calcular (11 - RESTO)
-    // O resultado de (11 - RESTO) deve ser primeiro digito verificador do CPF (10º digito)
-    // Caso o RESTO seja 0 ou 1, o digito verificador deve ser ZERO
+    let resto = soma % 11;
+    
+    if (resto < 2) {
+        if (cpf.charAt(9) != 0) {
+            alert("CPF inválido");
+            return false;
+        }
+        // verificar se o primeiro dígito verificador 
+        // (10º dígito do cpf) é igual a zero
+        // 10º dígito do cpf é recuperado com cpf.charAt(9)
+        return true;
+    }
+
+    let digitoVerificador1 = 11 - resto;
+
+    if (digitoVerificador1 != cpf.charAt(9)) {
+        alert("CPF inválido");
+        return false;
+    }
+    // verificar se o primeiro dígito verificador
+    // (10º dígito do cpf) é igual ao digitoVerificador1
 
     return true;
+
+    // multiplicar cada digito do cpf atéo 1º digito verificador
+    // por 11, 10, 9 ... 2
+    // recuperar o resto da divisão da soma de todas as 
+    // multiplicações por 11. Se o resto for menor que 2, o 2º
+    // digito verificador deve ser zero. Caso contrário deve ser igual
+    // ao resto
+    // o segundo digito é o cpf.charAt(10)
+    // o primeiro digito é o cpf.charAt(9)
 
 }
